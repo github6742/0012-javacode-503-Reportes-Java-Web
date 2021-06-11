@@ -13,6 +13,19 @@
             <br/>
             <h:commandLink id="Reporte2" target="_blank" value="reporte2" actionListener="#{clienteBean.verReporte2()}"
                            title="Ver Reporte de Clientes 2"/> 
+            <br/>
+            <br/>
+            <br/>
+            <h:selectOneMenu value="#{clienteBean.pais}">
+                <f:selectItem itemValue="ESA" itemLabel="EL SALVADOR"/>
+                <f:selectItem itemValue="CRC" itemLabel="COSTA RICA"/>
+                <f:selectItem itemValue="NIC" itemLabel="NICARAGUA"/>
+                <f:selectItem itemValue="GUA" itemLabel="GUATEMALA"/>
+                <f:selectItem itemValue="PAN" itemLabel="PANAMA"/>
+            </h:selectOneMenu> 
+            <br/>
+            <h:commandLink id="Reporte3" target="_blank" value="reporte3" actionListener="#{clienteBean.verReporte3()}"
+                           title="Ver Reporte de Clientes 3 - Parametro Pais"/> 
         </h:form>
     </h:body>
 </html>

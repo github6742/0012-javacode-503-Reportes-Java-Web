@@ -15,9 +15,24 @@ import javax.servlet.ServletContext;
 @ManagedBean
 @ViewScoped
 public class clienteBean implements Serializable{
-
+    
+    private String pais;
+    
     public clienteBean() {
     }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+    
+    
+    
+    
+    
     //Metodo para invocar el reporte y enviarle los parametros si es que necesita  
     public void verReporte() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         
@@ -42,6 +57,19 @@ public class clienteBean implements Serializable{
         String ruta = servletContext.getRealPath("/reportes/reportCliente2.jasper");
        
         rCliente.getReporte2(ruta);        
+        FacesContext.getCurrentInstance().responseComplete();               
+    }
+    //Metodo para invocar el reporte y enviarle los parametros si es que necesita  
+    public void verReporte3() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        
+        //Instancia hacia la clase reporteClientes        
+        reporteCliente rCliente = new reporteCliente();
+        
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ServletContext servletContext = (ServletContext) facesContext.getExternalContext().getContext();
+        String ruta = servletContext.getRealPath("/reportes/reporteClienteParametro.jasper");
+       
+        rCliente.getReporte3(ruta,this.pais);        
         FacesContext.getCurrentInstance().responseComplete();               
     }
 }
